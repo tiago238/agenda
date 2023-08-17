@@ -7,11 +7,11 @@ app_name = 'contact'
 urlpatterns = [     
     path('search/', views.search, name='search'), 
     path('', views.index, name='index'), 
-
+    path('contact/<int:contact_id>/', views.contact, name='contact'),
     # contact (CRUD)
-    path('contact/<int:contact_id>/detail/', views.contact, name='detail'),
+    #path('contact/<int:contact_id>/detail/', views.detail, name='detail'),
     path('contact/create/', views.create, name='create'),
-    path('contact/<int:contact_id>/update/', views.contact, name='update'),
-    path('contact/<int:contact_id>/delete/', views.contact, name='delete'),
+    path('contact/<int:contact_id>/update/', views.update, name='update'),
+    path('contact/<int:contact_id>/delete/', views.delete, name='delete'),
 ]
 

@@ -4,38 +4,19 @@ from . import models
 
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                'placeholder': 'Aqui veio do init',
-            }
-        ),
-        label='Primeiro Nome',
-        help_text= 'Digitar o primeiro nome'
+    picture = forms.ImageField(
+       widget=forms.FileInput(
+           attrs={
+              'accept': 'image/*' 
+           }
+       ) 
     )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        # self.fields['first_name'].widget.attrs.update(
-        #     {
-        #     'placeholder': 'Escreva aqui'
-        # }
-        
-    # )
-
     class Meta:
         model = models.Contact
         fields = (
-            'first_name', 'last_name', 'phone', 'email', 'description', 'category',
-        )
-        # widgets = {
-        #     'first_name': forms.TextInput(
-        #         attrs={
-        #             'placeholder': 'Escreva aqui'
-        #         }
-        #     )
-        # }
+            'first_name', 'last_name', 'phone', 'email', 'description', 
+            'category', 'picture',
+        )   
 
     def clean(self):
         cleaned_data = self.cleaned_data
